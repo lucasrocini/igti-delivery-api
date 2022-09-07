@@ -77,8 +77,15 @@ async function deleteOrder(id) {
     await writeFile(global.fileName, JSON.stringify(data, null, 2));
 }
 
-async function getOrder() {
-    return data;
+async function getOrder(id) {
+    const data = JSON.parse(await readFile(global.fileName));
+    const index = data.pedidos.findIndex(a => a.id === parseInt(id));
+
+    if (index === -1) {
+        throw new Error("Registro não Encontrado");
+    }
+
+    return data.pedidos[index];
 }
 
 async function getTotalByClient() {

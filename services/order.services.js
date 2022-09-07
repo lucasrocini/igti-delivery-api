@@ -20,8 +20,8 @@ async function deleteOrder(id) {
     return await OrderRepository.deleteOrder(id);
 }
 
-async function getOrder() {
-    return await OrderRepository.getOrder();
+async function getOrder(id) {
+    return await OrderRepository.getOrder(id);
 }
 async function getTotalByClient() {
     return await OrderRepository.getTotalByClient();
