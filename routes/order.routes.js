@@ -3,6 +3,8 @@ import OrderController from "../controllers/order.controller.js";
 
 const router = express.Router();
 
+router.get('/order', OrderController.getOrders);
+
 router.post('/order', OrderController.placeOrder);
 
 router.patch('/order', OrderController.updateOrder);

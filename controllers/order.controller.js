@@ -1,9 +1,29 @@
-//import OrderService from "../services/order.service.js";
+import OrderServices from "../services/order.services.js";
+
+async function getOrders(req, res, next) {
+    try {
+
+        res.send(await OrderServices.getOrders());
+
+        logger.info(`getOrders`);
+    } catch (err) {
+        next(err);
+    }
+    res.end();
+}
 
 async function placeOrder(req, res, next) {
     try {
-
         logger.info(`placeOrder`);
+
+        let order = req.body;
+
+        if (!order.cliente || !order.produto ||order.valor == null) {
+            throw new Error("Faltam dados no pedido!");
+        }
+
+        res.status(200)
+            .send(await OrderServices.placeOrder(order.cliente, order.produto,order.valor ));        
     } catch (err) {
         next(err);
     }
@@ -12,8 +32,19 @@ async function placeOrder(req, res, next) {
 
 async function updateOrder(req, res, next) {
     try {
-
         logger.info(`updateOrder`);
+
+        let order = req.body;
+
+        if (order.id == null || !order.cliente || 
+            !order.produto ||order.valor == null || 
+            order.entregue == null) {
+            throw new Error("Faltam dados no pedido!");
+        }
+
+        res.status(200)
+            .send(await OrderServices.updateOrder(order));        
+
     } catch (err) {
         next(err);
     }
@@ -82,6 +113,7 @@ async function getTopSales(req, res, next) {
 
 
 export default {
+    getOrders,
     placeOrder,
     updateOrder,
     updateStatus,
