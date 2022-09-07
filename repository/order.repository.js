@@ -62,9 +62,21 @@ async function updateStatus(order) {
 
     return data.pedidos[index];
 }
-async function deleteOrder() {
-    return data;
+async function deleteOrder(id) {
+    const data = JSON.parse(await readFile(global.fileName));
+    const index = data.pedidos.findIndex(a => a.id === parseInt(id));
+
+    if (index === -1) {
+        throw new Error("Registro não Encontrado");
+    }
+
+    data.pedidos = data.pedidos.filter(
+        pedido => pedido.id !== parseInt(id)
+    );
+
+    await writeFile(global.fileName, JSON.stringify(data, null, 2));
 }
+
 async function getOrder() {
     return data;
 }

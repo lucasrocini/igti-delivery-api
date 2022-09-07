@@ -16,8 +16,8 @@ async function updateStatus(order) {
     return await OrderRepository.updateStatus(order);
 }
 
-async function deleteOrder() {
-    return await OrderRepository.deleteOrder();
+async function deleteOrder(id) {
+    return await OrderRepository.deleteOrder(id);
 }
 
 async function getOrder() {

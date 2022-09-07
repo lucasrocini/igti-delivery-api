@@ -73,8 +73,15 @@ async function updateStatus(req, res, next) {
 
 async function deleteOrder(req, res, next) {
     try {
-
         logger.info(`deleteOrder`);
+
+        if (req.params.id == null) {
+            throw new Error("Id não informado!");
+        }
+
+        res.status(200)
+            .send(await OrderServices.deleteOrder(req.params.id));  
+
     } catch (err) {
         next(err);
     }

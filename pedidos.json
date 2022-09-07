@@ -2,14 +2,6 @@
   "nextId": 510,
   "pedidos": [
     {
-      "id": 1,
-      "cliente": "Lavínia Dâmaso",
-      "produto": "Pizza Muçarela",
-      "valor": 26,
-      "entregue": false,
-      "timestamp": "2021-05-02T19:48:09.765Z"
-    },
-    {
       "id": 2,
       "cliente": "Tália Simas",
       "produto": "Pizza Napolitana",
@@ -20,14 +12,6 @@
     {
       "id": 3,
       "cliente": "Tália Simas",
-      "produto": "Pizza Muçarela",
-      "valor": 26,
-      "entregue": true,
-      "timestamp": "2021-05-02T19:48:09.765Z"
-    },
-    {
-      "id": 4,
-      "cliente": "Bento Torcato",
       "produto": "Pizza Muçarela",
       "valor": 26,
       "entregue": true,
