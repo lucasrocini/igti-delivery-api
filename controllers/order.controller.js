@@ -53,8 +53,18 @@ async function updateOrder(req, res, next) {
 
 async function updateStatus(req, res, next) {
     try {
-
         logger.info(`updateStatus`);
+
+        let order = req.body;
+
+        if (order.id == null || order.entregue == null) {
+            throw new Error("Faltam dados no pedido!");
+        }
+
+        res.status(200)
+            .send(await OrderServices.updateStatus(order));        
+
+
     } catch (err) {
         next(err);
     }

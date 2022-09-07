@@ -9,7 +9,7 @@ router.post('/order', OrderController.placeOrder);
 
 router.patch('/order', OrderController.updateOrder);
 
-router.patch('/order/status', OrderController.updateStatus);
+router.patch('/order/deliveryStatus', OrderController.updateStatus);
 
 router.delete('/order/:id', OrderController.deleteOrder);
 

@@ -47,8 +47,20 @@ async function updateOrder(order) {
 
     return data.pedidos[index];
 }
-async function updateStatus() {
-    return data;
+async function updateStatus(order) {
+    const data = JSON.parse(await readFile(global.fileName));
+    const index = data.pedidos.findIndex(a => a.id === order.id);
+
+    //Returns -1 when index not found
+    if (index === -1) {
+        throw new Error("Registro não Encontrado");
+    }
+
+    data.pedidos[index].entregue = order.entregue;
+
+    await writeFile(global.fileName, JSON.stringify(data, null, 2));
+
+    return data.pedidos[index];
 }
 async function deleteOrder() {
     return data;
