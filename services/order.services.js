@@ -23,12 +23,12 @@ async function deleteOrder(id) {
 async function getOrder(id) {
     return await OrderRepository.getOrder(id);
 }
-async function getTotalByClient() {
-    return await OrderRepository.getTotalByClient();
+async function getTotalByClient(client) {
+    return await OrderRepository.getTotalByClient(client);
 }
 
-async function getTotalByProduct() {
-    return await OrderRepository.getTotalByProduct();
+async function getTotalByProduct(product) {
+    return await OrderRepository.getTotalByProduct(product);
 }
 
 async function getTopSales() {

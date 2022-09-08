@@ -99,8 +99,11 @@ async function getOrder(req, res, next) {
 
 async function getTotalByClient(req, res, next) {
     try {
+        logger.info(`getTotalByClient - ${req.params.client}`);
 
-        logger.info(`getTotalByClient`);
+        res.status(200)
+            .send(await OrderServices.getTotalByClient(req.params.client));  
+
     } catch (err) {
         next(err);
     }
@@ -109,8 +112,11 @@ async function getTotalByClient(req, res, next) {
 
 async function getTotalByProduct(req, res, next) {
     try {
+        logger.info(`getTotalByProduct - ${req.params.product}`);
 
-        logger.info(`getTotalByProduct`);
+        res.status(200)
+            .send(await OrderServices.getTotalByProduct(req.params.product));  
+
     } catch (err) {
         next(err);
     }

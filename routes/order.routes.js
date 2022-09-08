@@ -13,9 +13,9 @@ router.patch('/order/deliveryStatus', OrderController.updateStatus);
 
 router.delete('/order/:id', OrderController.deleteOrder);
 
-router.get('/order/totalByClient/:cliente', OrderController.getTotalByClient);
+router.get('/order/totalByClient/:client', OrderController.getTotalByClient);
 
-router.get('/order/totalByProduct/:produto', OrderController.getTotalByProduct);
+router.get('/order/totalByProduct/:product', OrderController.getTotalByProduct);
 
 router.get('/order/topSales', OrderController.getTopSales);
 

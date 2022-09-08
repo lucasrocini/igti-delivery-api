@@ -1,4 +1,5 @@
 import {promises as fs} from "fs";
+import { loggers } from "winston";
 
 const {readFile, writeFile} = fs;
 
@@ -88,12 +89,35 @@ async function getOrder(id) {
     return data.pedidos[index];
 }
 
-async function getTotalByClient() {
-    return data;
+async function getTotalByClient(client) {
+    const data = JSON.parse(await readFile(global.fileName));
+
+    let totalOrdersDeliveredByClient = 
+        data.pedidos.reduce( (acc, cur) => {
+            if(cur.entregue) {
+                if(cur.cliente === client) 
+                    return acc + cur.valor;
+            }
+            return acc;
+        }, 0);
+    
+    return JSON.stringify(totalOrdersDeliveredByClient);
 }
 
-async function getTotalByProduct() {
-    return data;
+async function getTotalByProduct(product) {
+    const data = JSON.parse(await readFile(global.fileName));
+
+    let totalOrdersDeliveredByProduct = 
+        data.pedidos.reduce( (acc, cur) => {
+            if(cur.entregue) {
+                if(cur.produto === product) 
+                    return acc + cur.valor;
+            }
+            return acc;
+        }, 0);
+    
+    return JSON.stringify(totalOrdersDeliveredByProduct);
+
 }
 
 async function getTopSales() {
