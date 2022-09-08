@@ -1,7 +1,7 @@
-import {promises as fs} from "fs";
+import { promises as fs } from "fs";
 import { loggers } from "winston";
 
-const {readFile, writeFile} = fs;
+const { readFile, writeFile } = fs;
 
 global.fileName = "pedidos.json";
 
@@ -10,7 +10,7 @@ async function getOrders() {
     return data.pedidos;
 }
 
-async function placeOrder( client, product, value) {
+async function placeOrder(client, product, value) {
     const data = JSON.parse(await readFile(global.fileName));
 
     let newOrder = {
@@ -92,36 +92,63 @@ async function getOrder(id) {
 async function getTotalByClient(client) {
     const data = JSON.parse(await readFile(global.fileName));
 
-    let totalOrdersDeliveredByClient = 
-        data.pedidos.reduce( (acc, cur) => {
-            if(cur.entregue) {
-                if(cur.cliente === client) 
+    let totalOrdersDeliveredByClient =
+        data.pedidos.reduce((acc, cur) => {
+            if (cur.entregue) {
+                if (cur.cliente === client)
                     return acc + cur.valor;
             }
             return acc;
         }, 0);
-    
+
     return JSON.stringify(totalOrdersDeliveredByClient);
 }
 
 async function getTotalByProduct(product) {
     const data = JSON.parse(await readFile(global.fileName));
 
-    let totalOrdersDeliveredByProduct = 
-        data.pedidos.reduce( (acc, cur) => {
-            if(cur.entregue) {
-                if(cur.produto === product) 
+    let totalOrdersDeliveredByProduct =
+        data.pedidos.reduce((acc, cur) => {
+            if (cur.entregue) {
+                if (cur.produto === product)
                     return acc + cur.valor;
             }
             return acc;
         }, 0);
-    
+
     return JSON.stringify(totalOrdersDeliveredByProduct);
 
 }
 
-async function getTopSales() {
-    return data;
+async function getTopProducts() {
+    const data = JSON.parse(await readFile(global.fileName));
+
+    let topProducts = [{
+        productName: data.pedidos[0].produto,
+        totalSales: 1
+    }];
+
+    data.pedidos.forEach(pedido => {
+        if (pedido.entregue) {
+            if (!topProducts.filter(p => p.productName === pedido.produto).length > 0) {
+                topProducts.push({ productName: pedido.produto, totalSales: 1 })
+            } else {
+                let index = topProducts.findIndex(p => p.productName === pedido.produto);
+                topProducts[index].totalSales++;
+            }
+        }
+    });
+
+    topProducts.sort( (a,b) => {
+        if(a.totalSales < b.totalSales) return -1;
+        if(a.totalSales < b.totalSales) return 1;
+        return 0;
+    });
+
+    topProducts = topProducts
+        .map((p) => `${p.productName} - ${p.totalSales}`);
+
+    return JSON.stringify(topProducts);
 }
 
 export default {
@@ -133,7 +160,7 @@ export default {
     getOrder,
     getTotalByClient,
     getTotalByProduct,
-    getTopSales
+    getTopProducts
 }
 
 

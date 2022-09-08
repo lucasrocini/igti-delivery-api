@@ -123,10 +123,13 @@ async function getTotalByProduct(req, res, next) {
     res.end();
 }
 
-async function getTopSales(req, res, next) {
+async function getTopProducts(req, res, next) {
     try {
-
-        logger.info(`getTopSales`);
+        logger.info(`getTopProducts`);
+        
+        res.status(200)
+            .send(await OrderServices.getTopProducts());  
+        
     } catch (err) {
         next(err);
     }
@@ -143,5 +146,5 @@ export default {
     getOrder,
     getTotalByClient,
     getTotalByProduct,
-    getTopSales
+    getTopProducts
 }

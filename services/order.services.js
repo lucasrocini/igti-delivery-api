@@ -31,8 +31,8 @@ async function getTotalByProduct(product) {
     return await OrderRepository.getTotalByProduct(product);
 }
 
-async function getTopSales() {
-    return await OrderRepository.getTopSales();
+async function getTopProducts() {
+    return await OrderRepository.getTopProducts();
 }
 
 export default{
@@ -44,5 +44,5 @@ export default{
     getOrder,
     getTotalByClient,
     getTotalByProduct,
-    getTopSales
+    getTopProducts
 }

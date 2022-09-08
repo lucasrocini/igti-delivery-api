@@ -17,7 +17,7 @@ router.get('/order/totalByClient/:client', OrderController.getTotalByClient);
 
 router.get('/order/totalByProduct/:product', OrderController.getTotalByProduct);
 
-router.get('/order/topSales', OrderController.getTopSales);
+router.get('/order/topProducts', OrderController.getTopProducts);
 
 router.get('/order/:id', OrderController.getOrder);
 

@@ -1,6 +1,14 @@
 {
-  "nextId": 510,
+  "nextId": 501,
   "pedidos": [
+    {
+      "id": 1,
+      "cliente": "Lavínia Dâmaso",
+      "produto": "Pizza Muçarela",
+      "valor": 26,
+      "entregue": true,
+      "timestamp": "2021-05-02T19:48:09.765Z"
+    },
     {
       "id": 2,
       "cliente": "Tália Simas",
@@ -12,6 +20,14 @@
     {
       "id": 3,
       "cliente": "Tália Simas",
+      "produto": "Pizza Muçarela",
+      "valor": 26,
+      "entregue": true,
+      "timestamp": "2021-05-02T19:48:09.765Z"
+    },
+    {
+      "id": 4,
+      "cliente": "Bento Torcato",
       "produto": "Pizza Muçarela",
       "valor": 26,
       "entregue": true,
@@ -3977,78 +3993,6 @@
       "valor": 32,
       "entregue": true,
       "timestamp": "2021-05-02T19:48:09.767Z"
-    },
-    {
-      "id": 501,
-      "entregue": true,
-      "timestamp": "2022-09-07T23:33:35.648Z",
-      "cliente": "gggggggggggg ggggggg",
-      "produto": "yyyyyyyyyyy yyyyyyy",
-      "valor": 123213213
-    },
-    {
-      "id": 502,
-      "entregue": true,
-      "timestamp": "2022-09-07T22:45:27.718Z"
-    },
-    {
-      "id": 503,
-      "cliente": "Lavínia asdasdasdasd",
-      "produto": "Pizza asdsadasdsad",
-      "valor": 26,
-      "entregue": false,
-      "timestamp": "2022-09-07T22:47:40.763Z"
-    },
-    {
-      "id": 504,
-      "cliente": "qweqweqwe asdasdasdasd",
-      "produto": "zxczxczxc asdsadasdsad",
-      "valor": 26,
-      "entregue": false,
-      "timestamp": "2022-09-07T22:49:40.988Z"
-    },
-    {
-      "id": 505,
-      "cliente": "qweqweqwe asdasdasdasd",
-      "produto": "zxczxczxc asdsadasdsad",
-      "valor": 26,
-      "entregue": false,
-      "timestamp": "2022-09-07T22:50:58.224Z"
-    },
-    {
-      "id": 506,
-      "cliente": "gggggggggggg ggggggg",
-      "produto": "yyyyyyyyyyy yyyyyyy",
-      "valor": 123213213,
-      "entregue": true,
-      "timestamp": "2022-09-07T23:23:33.674Z"
-    },
-    {
-      "id": 507,
-      "cliente": {
-        "id": 501,
-        "entregue": true
-      },
-      "entregue": false,
-      "timestamp": "2022-09-07T23:35:01.757Z"
-    },
-    {
-      "id": 508,
-      "cliente": {
-        "id": 505,
-        "entregue": true
-      },
-      "entregue": false,
-      "timestamp": "2022-09-07T23:35:47.991Z"
-    },
-    {
-      "id": 509,
-      "cliente": {
-        "id": 505,
-        "entregue": true
-      },
-      "entregue": false,
-      "timestamp": "2022-09-07T23:36:59.869Z"
     }
   ]
 }
