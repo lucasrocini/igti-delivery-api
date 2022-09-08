@@ -35,7 +35,7 @@ async function getTopProducts() {
     return await OrderRepository.getTopProducts();
 }
 
-export default{
+export default {
     getOrders,
     placeOrder,
     updateOrder,

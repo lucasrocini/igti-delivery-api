@@ -33,7 +33,6 @@ async function updateOrder(order) {
     const data = JSON.parse(await readFile(global.fileName));
     const index = data.pedidos.findIndex(a => a.id === order.id);
 
-    //Returns -1 when index not found
     if (index === -1) {
         throw new Error("Registro não Encontrado");
     }
@@ -52,7 +51,6 @@ async function updateStatus(order) {
     const data = JSON.parse(await readFile(global.fileName));
     const index = data.pedidos.findIndex(a => a.id === order.id);
 
-    //Returns -1 when index not found
     if (index === -1) {
         throw new Error("Registro não Encontrado");
     }
@@ -117,7 +115,6 @@ async function getTotalByProduct(product) {
         }, 0);
 
     return JSON.stringify(totalOrdersDeliveredByProduct);
-
 }
 
 async function getTopProducts() {
@@ -136,9 +133,9 @@ async function getTopProducts() {
         }
     });
 
-    topProducts.sort( (a,b) => {
-        if(a.totalSales < b.totalSales) return 1;
-        if(a.totalSales > b.totalSales) return -1;
+    topProducts.sort((a, b) => {
+        if (a.totalSales < b.totalSales) return 1;
+        if (a.totalSales > b.totalSales) return -1;
         return 0;
     });
 
@@ -146,7 +143,6 @@ async function getTopProducts() {
         .map((p) => `${p.productName} - ${p.totalSales}`);
 
     return JSON.stringify(topProducts);
-    // return topProducts;
 }
 
 export default {

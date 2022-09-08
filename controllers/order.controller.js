@@ -18,12 +18,12 @@ async function placeOrder(req, res, next) {
 
         let order = req.body;
 
-        if (!order.cliente || !order.produto ||order.valor == null) {
+        if (!order.cliente || !order.produto || order.valor == null) {
             throw new Error("Faltam dados no pedido!");
         }
 
         res.status(200)
-            .send(await OrderServices.placeOrder(order.cliente, order.produto,order.valor ));        
+            .send(await OrderServices.placeOrder(order.cliente, order.produto, order.valor));
     } catch (err) {
         next(err);
     }
@@ -36,14 +36,14 @@ async function updateOrder(req, res, next) {
 
         let order = req.body;
 
-        if (order.id == null || !order.cliente || 
-            !order.produto ||order.valor == null || 
+        if (order.id == null || !order.cliente ||
+            !order.produto || order.valor == null ||
             order.entregue == null) {
             throw new Error("Faltam dados no pedido!");
         }
 
         res.status(200)
-            .send(await OrderServices.updateOrder(order));        
+            .send(await OrderServices.updateOrder(order));
 
     } catch (err) {
         next(err);
@@ -62,7 +62,7 @@ async function updateStatus(req, res, next) {
         }
 
         res.status(200)
-            .send(await OrderServices.updateStatus(order));        
+            .send(await OrderServices.updateStatus(order));
 
 
     } catch (err) {
@@ -76,7 +76,7 @@ async function deleteOrder(req, res, next) {
         logger.info(`deleteOrder`);
 
         res.status(200)
-            .send(await OrderServices.deleteOrder(req.params.id));  
+            .send(await OrderServices.deleteOrder(req.params.id));
 
     } catch (err) {
         next(err);
@@ -89,7 +89,7 @@ async function getOrder(req, res, next) {
         logger.info(`getOrder`);
 
         res.status(200)
-            .send(await OrderServices.getOrder(req.params.id));  
+            .send(await OrderServices.getOrder(req.params.id));
 
     } catch (err) {
         next(err);
@@ -102,7 +102,7 @@ async function getTotalByClient(req, res, next) {
         logger.info(`getTotalByClient - ${req.params.client}`);
 
         res.status(200)
-            .send(await OrderServices.getTotalByClient(req.params.client));  
+            .send(await OrderServices.getTotalByClient(req.params.client));
 
     } catch (err) {
         next(err);
@@ -115,7 +115,7 @@ async function getTotalByProduct(req, res, next) {
         logger.info(`getTotalByProduct - ${req.params.product}`);
 
         res.status(200)
-            .send(await OrderServices.getTotalByProduct(req.params.product));  
+            .send(await OrderServices.getTotalByProduct(req.params.product));
 
     } catch (err) {
         next(err);
@@ -126,10 +126,10 @@ async function getTotalByProduct(req, res, next) {
 async function getTopProducts(req, res, next) {
     try {
         logger.info(`getTopProducts`);
-        
+
         res.status(200)
-            .send(await OrderServices.getTopProducts());  
-        
+            .send(await OrderServices.getTopProducts());
+
     } catch (err) {
         next(err);
     }
