@@ -123,10 +123,7 @@ async function getTotalByProduct(product) {
 async function getTopProducts() {
     const data = JSON.parse(await readFile(global.fileName));
 
-    let topProducts = [{
-        productName: data.pedidos[0].produto,
-        totalSales: 1
-    }];
+    let topProducts = [];
 
     data.pedidos.forEach(pedido => {
         if (pedido.entregue) {
@@ -140,8 +137,8 @@ async function getTopProducts() {
     });
 
     topProducts.sort( (a,b) => {
-        if(a.totalSales < b.totalSales) return -1;
         if(a.totalSales < b.totalSales) return 1;
+        if(a.totalSales > b.totalSales) return -1;
         return 0;
     });
 
@@ -149,6 +146,7 @@ async function getTopProducts() {
         .map((p) => `${p.productName} - ${p.totalSales}`);
 
     return JSON.stringify(topProducts);
+    // return topProducts;
 }
 
 export default {
